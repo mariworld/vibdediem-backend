@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :comments, only: [:create]
+  resources :comments, only: [:create,:index]
   resources :cards, only: [:create,:destroy,:index]
-  resources :users, only: [:create]
+  resources :users, only: [:create,:index]
   post "/login", to: "users#login"
   get "/login", to: "users#login"
   get "/signup", to: "users#signup"

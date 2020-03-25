@@ -11,6 +11,11 @@ class UsersController < ApplicationController
           render json: {error: @user.errors.full_messages}
         end
       end
+
+      def index
+        @users = User.all
+        render json: @users
+      end
     
     
     
@@ -28,7 +33,7 @@ class UsersController < ApplicationController
           vibe_token = encode_token(infoToSaveInBox)
           render json: {user: UserSerializer.new(@user), token: vibe_token}
         else
-          render json: {error: "NICE TRY, INCORRECT USERNAME OR PASSWORD"}
+          render json: {error: "INCORRECT USERNAME OR PASSWORD"}
         end
       end
 
@@ -39,7 +44,7 @@ class UsersController < ApplicationController
           vibe_token = encode_token(infoToSaveInBox)
           render json: {user: UserSerializer.new(@user), token: vibe_token}
         else
-          render json: {error: "NICE TRY, INCORRECT USERNAME OR PASSWORD"}
+          render json: {error: "INCORRECT USERNAME OR PASSWORD"}
         end
       end
     

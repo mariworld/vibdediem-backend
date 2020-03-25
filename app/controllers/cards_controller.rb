@@ -8,12 +8,17 @@ class CardsController < ApplicationController
 
     def index
       @cards = Card.all
+      render json: @cards
     end
 
     def destroy
       @card = Card.find(params[:id])
       @card.destroy
       render json: @cards
+    end
+
+    def sort_date
+      sorted = @cards.order(:created_at)
     end
 
   
